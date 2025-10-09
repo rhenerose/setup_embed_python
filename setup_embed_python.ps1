@@ -62,11 +62,12 @@ try {
         }
     }
 
-    # 全バージョン取得
+    # 全バージョン取得（3.14.0 なども抽出できるように修正）
     $allVersions = ($response.Content -split "`n") |
-        Where-Object { $_ -match 'href="(\d+\.\d+\.\d+)/"' } |
+        Where-Object { $_ -match 'href="([\d\.]+)/"' } |
         ForEach-Object { ($_ -replace '.*href="([^"]+)/".*', '$1') } |
         Where-Object { $_ -like "3.*" }
+
 
     # 3.9以上のメジャーバージョン抽出（昇順）
     $majorVersions = $allVersions |
@@ -86,8 +87,8 @@ try {
     }
     $selectedMajor = $majorVersions[$majorIndex]
 
-    # 選択したメジャーバージョンに該当する全パッチバージョンを抽出
-    $patchVersions = $allVersions | Where-Object { $_ -like "$selectedMajor.*" } | Sort-Object { [version]$_ }
+    # 選択したメジャーバージョンに該当する全パッチバージョンを抽出（3.14.0 などを厳密に抽出）
+    $patchVersions = $allVersions | Where-Object { $_ -match "^$selectedMajor\.\d+$" } | Sort-Object { [version]$_ }
 
     # ↓ ここで組み込み版存在チェックをしてフィルターする
     Write-Host "組み込み版の存在チェックをしています。少々お待ちください..." -ForegroundColor Cyan
@@ -112,10 +113,11 @@ try {
 
     # 有効なパッチバージョンを昇順で表示
     $validPatchVersions = $validPatchVersions | Sort-Object { [version]$_ }
+    $validPatchVersions = [string[]]$validPatchVersions
 
     Write-Host "`n== 組み込み版が存在するパッチバージョンを選択してください =="
     for ($i = 0; $i -lt $validPatchVersions.Count; $i++) {
-        Write-Host "[$i] $($validPatchVersions[$i])"
+        Write-Host "[$i] $([string]$validPatchVersions[$i])"
     }
     # デフォルトで最新版（昇順なので最後が最新版）
     $defaultPatchIndex = $validPatchVersions.Count - 1
