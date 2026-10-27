@@ -1,25 +1,25 @@
-# =============================================
+ï»¿# =============================================
 # setup_embed_python.ps1
 # ---------------------------------------------
-# Windows ‘g‚İ‚İ”Å Python ŠÂ‹«ƒZƒbƒgƒAƒbƒv©“®‰»ƒXƒNƒŠƒvƒg
+# Windows çµ„ã¿è¾¼ã¿ç‰ˆ Python ç’°å¢ƒã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—è‡ªå‹•åŒ–ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 #
-# yå‚È‹@”\Eƒ[ƒNƒtƒ[z
-#   - Šù‘¶PythonŠÂ‹«ƒtƒHƒ‹ƒ_(—á: python310“™)‚ğŒŸo‚µAƒ†[ƒU[Šm”FŒã‚ÉˆÀ‘S‚Éíœ
-#   - PythonŒö®ƒTƒCƒg‚©‚ç3.9ˆÈ~‚Ìƒo[ƒWƒ‡ƒ“ˆê——‚ğæ“¾‚µA‘Î˜b“I‚Éƒo[ƒWƒ‡ƒ“‘I‘ğ
-#   - ‘I‘ğƒo[ƒWƒ‡ƒ“‚Ìembeddable zip‚ª‘¶İ‚·‚é‚©©“®”»’è‚µAÅV”Å‚ğ„§
-#   - ‘g‚İ‚İ”Åzip‚ğƒ_ƒEƒ“ƒ[ƒhE“WŠJ‚µAsite—LŒø‰»‚â’Ç‰ÁƒpƒXİ’è‚ğ©“®‰»
-#       ¦ ’Ç‰ÁƒpƒX‚ğ•ÏX‚µ‚½‚¢ê‡‚Í $extraPaths ‚ğ•ÒW‚µ‚Ä‚­‚¾‚³‚¢
-#   - ÅV‚Ìuv.exe‚ğGitHub‚©‚çƒ_ƒEƒ“ƒ[ƒh
-#   - uv.exe‚ğg‚Á‚ÄpipƒCƒ“ƒXƒg[ƒ‹‚Ærequirements.txt‚É‚æ‚éˆË‘¶ƒ‚ƒWƒ…[ƒ‹©“®ƒCƒ“ƒXƒg[ƒ‹
-#       - uv.exe ‚ª—˜—p‚Å‚«‚È‚¢ê‡‚ÍAŒö®‚©‚ç get-pip.py ‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä pip ‚ğƒCƒ“ƒXƒg[ƒ‹
+# ã€ä¸»ãªæ©Ÿèƒ½ãƒ»ãƒ¯ãƒ¼ã‚¯ãƒ•ãƒ­ãƒ¼ã€‘
+#   - æ—¢å­˜Pythonç’°å¢ƒãƒ•ã‚©ãƒ«ãƒ€(ä¾‹: python310ç­‰)ã‚’æ¤œå‡ºã—ã€ãƒ¦ãƒ¼ã‚¶ãƒ¼ç¢ºèªå¾Œã«å®‰å…¨ã«å‰Šé™¤
+#   - Pythonå…¬å¼ã‚µã‚¤ãƒˆã‹ã‚‰3.9ä»¥é™ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ä¸€è¦§ã‚’å–å¾—ã—ã€å¯¾è©±çš„ã«ãƒãƒ¼ã‚¸ãƒ§ãƒ³é¸æŠ
+#   - é¸æŠãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®embeddable zipãŒå­˜åœ¨ã™ã‚‹ã‹è‡ªå‹•åˆ¤å®šã—ã€æœ€æ–°ç‰ˆã‚’æ¨å¥¨
+#   - çµ„ã¿è¾¼ã¿ç‰ˆzipã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹ã—ã€siteæœ‰åŠ¹åŒ–ã‚„è¿½åŠ ãƒ‘ã‚¹è¨­å®šã‚’è‡ªå‹•åŒ–
+#       â€» è¿½åŠ ãƒ‘ã‚¹ã‚’å¤‰æ›´ã—ãŸã„å ´åˆã¯ $extraPaths ã‚’ç·¨é›†ã—ã¦ãã ã•ã„
+#   - æœ€æ–°ã®uv.exeã‚’GitHubã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
+#   - uv.exeã‚’ä½¿ã£ã¦pipã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã¨requirements.txtã«ã‚ˆã‚‹ä¾å­˜ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«è‡ªå‹•ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+#       - uv.exe ãŒåˆ©ç”¨ã§ããªã„å ´åˆã¯ã€å…¬å¼ã‹ã‚‰ get-pip.py ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ pip ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 #
-# yÀs—áz
-#   - PowerShell‚Å–{ƒXƒNƒŠƒvƒg‚ğ‰EƒNƒŠƒbƒNuPowerShell‚ÅÀsv‚Ü‚½‚Íƒ^[ƒ~ƒiƒ‹‚©‚çÀs
+# ã€å®Ÿè¡Œä¾‹ã€‘
+#   - PowerShellã§æœ¬ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯ã€ŒPowerShellã§å®Ÿè¡Œã€ã¾ãŸã¯ã‚¿ãƒ¼ãƒŸãƒŠãƒ«ã‹ã‚‰å®Ÿè¡Œ
 # =============================================
 
-# ŒŸõƒpƒX‚É’Ç‰Á‚·‚éƒpƒX‚ÌƒŠƒXƒg‚ğì¬ (•K—v‚É‰‚¶‚ÄC³)
-#  - ƒpƒX‚ğ’Ç‰Á‚·‚éÛ‚É‚ÍƒJƒ“ƒ}‹æØ‚è‚Å’Ç‰Á ("pathA", "pathB" ‚È‚Ç)
-#  - ƒpƒX‚Í Python.exe ‚Ì‚ ‚éƒfƒBƒŒƒNƒgƒŠ‚©‚ç‚Ì‘Š‘ÎƒpƒX‚ğw’è‚·‚é
+# æ¤œç´¢ãƒ‘ã‚¹ã«è¿½åŠ ã™ã‚‹ãƒ‘ã‚¹ã®ãƒªã‚¹ãƒˆã‚’ä½œæˆ (å¿…è¦ã«å¿œã˜ã¦ä¿®æ­£)
+#  - ãƒ‘ã‚¹ã‚’è¿½åŠ ã™ã‚‹éš›ã«ã¯ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§è¿½åŠ  ("pathA", "pathB" ãªã©)
+#  - ãƒ‘ã‚¹ã¯ Python.exe ã®ã‚ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‹ã‚‰ã®ç›¸å¯¾ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹
 $extraPaths = @(
     "../source"
 )
@@ -27,11 +27,11 @@ $extraPaths = @(
 $ftpBase = "https://www.python.org/ftp/python/"
 $response = Invoke-WebRequest -Uri $ftpBase
 
-# Œ³‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğ•Û‘¶
+# å…ƒã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä¿å­˜
 $originalDir = Get-Location
 
 try {
-    # ReleaseƒtƒHƒ‹ƒ_‚Ìì¬‚ÆˆÚ“®
+    # Releaseãƒ•ã‚©ãƒ«ãƒ€ã®ä½œæˆã¨ç§»å‹•
     $releaseDir = Join-Path $PSScriptRoot "."
     $releaseDir = [System.IO.Path]::GetFullPath($releaseDir)
 
@@ -40,137 +40,137 @@ try {
     }
     Set-Location $releaseDir
 
-    # ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ƒIƒvƒVƒ‡ƒ“”»’è: --pip ‚ª‚ ‚ê‚Î uv ‚ğg‚í‚¸ pip ‚Ì‚İiforeach ‚ÌŠO‚ÉˆÚ“®j
+    # ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³åˆ¤å®š: --pip ãŒã‚ã‚Œã° uv ã‚’ä½¿ã‚ãš pip ã®ã¿ï¼ˆforeach ã®å¤–ã«ç§»å‹•ï¼‰
     $forcePip = $false
     if ($args -contains "--pip") {
         $forcePip = $true
-        Write-Host "--pip ƒIƒvƒVƒ‡ƒ“w’è: uv ‚ğg‚í‚¸ pip ‚Ì‚İ‚ÅƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·B" -ForegroundColor Yellow
+        Write-Host "--pip ã‚ªãƒ—ã‚·ãƒ§ãƒ³æŒ‡å®š: uv ã‚’ä½¿ã‚ãš pip ã®ã¿ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã€‚" -ForegroundColor Yellow
     }
-    # Python***ƒtƒHƒ‹ƒ_‚ğŠm”F‚µA‘¶İ‚·‚éê‡‚Ííœ‚·‚é‚©ƒ†[ƒU‚ÉŠm”F
+    # Python***ãƒ•ã‚©ãƒ«ãƒ€ã‚’ç¢ºèªã—ã€å­˜åœ¨ã™ã‚‹å ´åˆã¯å‰Šé™¤ã™ã‚‹ã‹ãƒ¦ãƒ¼ã‚¶ã«ç¢ºèª
     $pythonDirs = Get-ChildItem -Path $releaseDir -Directory | Where-Object { $_.Name -match '^python(\d+|\d+\.\d+)$' }
     foreach ($pyDir in $pythonDirs) {
         $dirName = $pyDir.Name
-        Write-Host "ŒŸo: $dirName" -ForegroundColor Yellow
-        $ans = Read-Host "[$dirName] ƒtƒHƒ‹ƒ_‚ªŠù‚É‘¶İ‚µ‚Ü‚·Bíœ‚µ‚Ä‚æ‚ë‚µ‚¢‚Å‚·‚©H (y/N)"
+        Write-Host "æ¤œå‡º: $dirName" -ForegroundColor Yellow
+        $ans = Read-Host "[$dirName] ãƒ•ã‚©ãƒ«ãƒ€ãŒæ—¢ã«å­˜åœ¨ã—ã¾ã™ã€‚å‰Šé™¤ã—ã¦ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ (y/N)"
         if ($ans -eq "y" -or $ans -eq "Y") {
             Remove-Item $pyDir.FullName -Recurse -Force
-            Write-Host "$dirName ƒtƒHƒ‹ƒ_‚ğíœ‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+            Write-Host "$dirName ãƒ•ã‚©ãƒ«ãƒ€ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
         }
         else {
-            Write-Host "ˆ—‚ğ’†’f‚µ‚Ü‚·B" -ForegroundColor Yellow
+            Write-Host "å‡¦ç†ã‚’ä¸­æ–­ã—ã¾ã™ã€‚" -ForegroundColor Yellow
             exit 1
         }
     }
 
-    # ‘Sƒo[ƒWƒ‡ƒ“æ“¾i3.14.0 ‚È‚Ç‚à’Šo‚Å‚«‚é‚æ‚¤‚ÉC³j
+    # å…¨ãƒãƒ¼ã‚¸ãƒ§ãƒ³å–å¾—ï¼ˆ3.14.0 ãªã©ã‚‚æŠ½å‡ºã§ãã‚‹ã‚ˆã†ã«ä¿®æ­£ï¼‰
     $allVersions = ($response.Content -split "`n") |
         Where-Object { $_ -match 'href="([\d\.]+)/"' } |
         ForEach-Object { ($_ -replace '.*href="([^"]+)/".*', '$1') } |
         Where-Object { $_ -like "3.*" }
 
 
-    # 3.9ˆÈã‚ÌƒƒWƒƒ[ƒo[ƒWƒ‡ƒ“’Šoi¸‡j
+    # 3.9ä»¥ä¸Šã®ãƒ¡ã‚¸ãƒ£ãƒ¼ãƒãƒ¼ã‚¸ãƒ§ãƒ³æŠ½å‡ºï¼ˆæ˜‡é †ï¼‰
     $majorVersions = $allVersions |
         ForEach-Object { ($_ -split '\.')[0..1] -join '.' } |
         Where-Object { [version]$_ -ge [version]"3.9" } |
         Sort-Object { [version]$_ } -Unique
 
-    # ‚Ü‚¸ƒƒWƒƒ[ƒo[ƒWƒ‡ƒ“‘I‘ğ
-    Write-Host "`n== ƒƒWƒƒ[ƒo[ƒWƒ‡ƒ“‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢ (3.9ˆÈ~) =="
+    # ã¾ãšãƒ¡ã‚¸ãƒ£ãƒ¼ãƒãƒ¼ã‚¸ãƒ§ãƒ³é¸æŠ
+    Write-Host "`n== ãƒ¡ã‚¸ãƒ£ãƒ¼ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’é¸æŠã—ã¦ãã ã•ã„ (3.9ä»¥é™) =="
     for ($i = 0; $i -lt $majorVersions.Count; $i++) {
         Write-Host "[$i] $($majorVersions[$i])"
     }
-    $majorIndex = Read-Host "”Ô†‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
+    $majorIndex = Read-Host "ç•ªå·ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„"
     if ($majorIndex -notmatch '^\d+$' -or [int]$majorIndex -ge $majorVersions.Count) {
-        Write-Error "–³Œø‚È“ü—Í‚Å‚·"
+        Write-Error "ç„¡åŠ¹ãªå…¥åŠ›ã§ã™"
         exit 1
     }
     $selectedMajor = $majorVersions[$majorIndex]
 
-    # ‘I‘ğ‚µ‚½ƒƒWƒƒ[ƒo[ƒWƒ‡ƒ“‚ÉŠY“–‚·‚é‘Sƒpƒbƒ`ƒo[ƒWƒ‡ƒ“‚ğ’Šoi3.14.0 ‚È‚Ç‚ğŒµ–§‚É’Šoj
+    # é¸æŠã—ãŸãƒ¡ã‚¸ãƒ£ãƒ¼ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«è©²å½“ã™ã‚‹å…¨ãƒ‘ãƒƒãƒãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’æŠ½å‡ºï¼ˆ3.14.0 ãªã©ã‚’å³å¯†ã«æŠ½å‡ºï¼‰
     $patchVersions = $allVersions | Where-Object { $_ -match "^$selectedMajor\.\d+$" } | Sort-Object { [version]$_ }
 
-    # « ‚±‚±‚Å‘g‚İ‚İ”Å‘¶İƒ`ƒFƒbƒN‚ğ‚µ‚ÄƒtƒBƒ‹ƒ^[‚·‚é
-    Write-Host "‘g‚İ‚İ”Å‚Ì‘¶İƒ`ƒFƒbƒN‚ğ‚µ‚Ä‚¢‚Ü‚·B­X‚¨‘Ò‚¿‚­‚¾‚³‚¢..." -ForegroundColor Cyan
+    # â†“ ã“ã“ã§çµ„ã¿è¾¼ã¿ç‰ˆå­˜åœ¨ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã™ã‚‹
+    Write-Host "çµ„ã¿è¾¼ã¿ç‰ˆã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ã„ã¾ã™ã€‚å°‘ã€…ãŠå¾…ã¡ãã ã•ã„..." -ForegroundColor Cyan
 
     $validPatchVersions = @()
     foreach ($ver in $patchVersions) {
         $zipUrl = "$ftpBase$ver/python-$ver-embed-amd64.zip"
         try {
-            # HEAD ƒŠƒNƒGƒXƒg‚Å‘¶İŠm”F
+            # HEAD ãƒªã‚¯ã‚¨ã‚¹ãƒˆã§å­˜åœ¨ç¢ºèª
             Invoke-WebRequest -Uri $zipUrl -Method Head -ErrorAction Stop | Out-Null
             $validPatchVersions += $ver
         }
         catch {
-            # ‘¶İ‚µ‚È‚¢ê‡‚Í–³‹
+            # å­˜åœ¨ã—ãªã„å ´åˆã¯ç„¡è¦–
         }
     }
 
     if ($validPatchVersions.Count -eq 0) {
-        Write-Warning "‘I‘ğ‚µ‚½ƒƒWƒƒ[ƒo[ƒWƒ‡ƒ“‚É‘g‚İ‚İ”Å‚ª‘¶İ‚µ‚Ü‚¹‚ñB"
+        Write-Warning "é¸æŠã—ãŸãƒ¡ã‚¸ãƒ£ãƒ¼ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«çµ„ã¿è¾¼ã¿ç‰ˆãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚"
         exit 1
     }
 
-    # —LŒø‚Èƒpƒbƒ`ƒo[ƒWƒ‡ƒ“‚ğ¸‡‚Å•\¦
+    # æœ‰åŠ¹ãªãƒ‘ãƒƒãƒãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’æ˜‡é †ã§è¡¨ç¤º
     $validPatchVersions = $validPatchVersions | Sort-Object { [version]$_ }
     $validPatchVersions = [string[]]$validPatchVersions
 
-    Write-Host "`n== ‘g‚İ‚İ”Å‚ª‘¶İ‚·‚éƒpƒbƒ`ƒo[ƒWƒ‡ƒ“‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢ =="
+    Write-Host "`n== çµ„ã¿è¾¼ã¿ç‰ˆãŒå­˜åœ¨ã™ã‚‹ãƒ‘ãƒƒãƒãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’é¸æŠã—ã¦ãã ã•ã„ =="
     for ($i = 0; $i -lt $validPatchVersions.Count; $i++) {
         Write-Host "[$i] $([string]$validPatchVersions[$i])"
     }
-    # ƒfƒtƒHƒ‹ƒg‚ÅÅV”Åi¸‡‚È‚Ì‚ÅÅŒã‚ªÅV”Åj
+    # ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§æœ€æ–°ç‰ˆï¼ˆæ˜‡é †ãªã®ã§æœ€å¾ŒãŒæœ€æ–°ç‰ˆï¼‰
     $defaultPatchIndex = $validPatchVersions.Count - 1
-    $patchIndex = Read-Host "”Ô†‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢iEnter‚ÅÅV”Å: $defaultPatchIndexj"
+    $patchIndex = Read-Host "ç•ªå·ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼ˆEnterã§æœ€æ–°ç‰ˆ: $defaultPatchIndexï¼‰"
     if ($patchIndex -eq "") {
         $patchIndex = $defaultPatchIndex
     }
     if ($patchIndex -notmatch '^\d+$' -or [int]$patchIndex -ge $validPatchVersions.Count) {
-        Write-Error "–³Œø‚È“ü—Í‚Å‚·"
+        Write-Error "ç„¡åŠ¹ãªå…¥åŠ›ã§ã™"
         exit 1
     }
 
     $version = $validPatchVersions[$patchIndex]
-    Write-Host "`n‘I‘ğ‚³‚ê‚½ƒo[ƒWƒ‡ƒ“: $version" -ForegroundColor Green
+    Write-Host "`né¸æŠã•ã‚ŒãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³: $version" -ForegroundColor Green
 
-    Write-Host "`n‘g‚İ‚İ”ÅPython‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·B" -ForegroundColor Cyan
-    Read-Host -Prompt "”CˆÓ‚ÌƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢..."
+    Write-Host "`nçµ„ã¿è¾¼ã¿ç‰ˆPythonã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚" -ForegroundColor Cyan
+    Read-Host -Prompt "ä»»æ„ã®ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„..."
 
-    # ƒo[ƒWƒ‡ƒ““ü—Í
-    # $version = Read-Host "Pythonƒo[ƒWƒ‡ƒ“‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢ (—á: 3.10.11)"
+    # ãƒãƒ¼ã‚¸ãƒ§ãƒ³å…¥åŠ›
+    # $version = Read-Host "Pythonãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ (ä¾‹: 3.10.11)"
 
-    # ƒo[ƒWƒ‡ƒ“•¶š—ñˆ—
-    # $shortVersion = $version -replace '\.', ''        # —á: 31011
+    # ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—å‡¦ç†
+    # $shortVersion = $version -replace '\.', ''        # ä¾‹: 31011
     $majorMinor = ($version -split '\.')[0..1] -join '.' # 3.10
     $embedName = "python-$version-embed-amd64.zip"
     $downloadUrl = "https://www.python.org/ftp/python/$version/$embedName"
     $targetFolder = "python$($majorMinor -replace '\.', '')"
 
-    # ì‹ÆƒfƒBƒŒƒNƒgƒŠ‚Ìì¬
+    # ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½œæˆ
     New-Item -ItemType Directory -Path $targetFolder -Force | Out-Null
 
-    # ƒ_ƒEƒ“ƒ[ƒh
+    # ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
     $zipPath = "$targetFolder\$embedName"
     Invoke-WebRequest -Uri $downloadUrl -OutFile $zipPath
 
-    # “WŠJ
+    # å±•é–‹
     Expand-Archive -Path $zipPath -DestinationPath $targetFolder -Force
     Remove-Item $zipPath
 
-    # site —LŒø‰»: python3xx._pth ‚ğ•ÒW
+    # site æœ‰åŠ¹åŒ–: python3xx._pth ã‚’ç·¨é›†
     $pthFile = Get-ChildItem -Path $targetFolder -Filter "python*._pth" | Select-Object -First 1
     if ($pthFile) {
         $pthPath = $pthFile.FullName
 
-        # site ‚ÌƒCƒ“ƒ|[ƒg‚ğ—LŒø‰»
-        Write-Host "`n== $($pthFile.Name) ‚Ì 'import site' ‚ğ—LŒø‰»‚µ‚Ü‚· =="
+        # site ã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆã‚’æœ‰åŠ¹åŒ–
+        Write-Host "`n== $($pthFile.Name) ã® 'import site' ã‚’æœ‰åŠ¹åŒ–ã—ã¾ã™ =="
         (Get-Content $pthPath) |
             ForEach-Object { $_ -replace '^#import site', 'import site' } |
             Set-Content $pthPath
-        Write-Host "$($pthFile.Name) ‚Ì 'import site' ‚ğ—LŒø‰»‚µ‚Ü‚µ‚½" -ForegroundColor Green
+        Write-Host "$($pthFile.Name) ã® 'import site' ã‚’æœ‰åŠ¹åŒ–ã—ã¾ã—ãŸ" -ForegroundColor Green
 
-        # . ‚Ì‚İ‚Ìs‚Ì’¼Œã‚ÉƒpƒX‚ğ1s‚¸‚Â’Ç‰Á
-        Write-Host "`n== $($pthFile.Name) ‚É’Ç‰ÁƒpƒX‚ğ’Ç‹L‚µ‚Ü‚· =="
+        # . ã®ã¿ã®è¡Œã®ç›´å¾Œã«ãƒ‘ã‚¹ã‚’1è¡Œãšã¤è¿½åŠ 
+        Write-Host "`n== $($pthFile.Name) ã«è¿½åŠ ãƒ‘ã‚¹ã‚’è¿½è¨˜ã—ã¾ã™ =="
         $pthLines = Get-Content $pthPath
         $newPthLines = @()
         for ($i = 0; $i -lt $pthLines.Count; $i++) {
@@ -180,19 +180,19 @@ try {
             }
         }
         Set-Content $pthPath $newPthLines
-        Write-Host "’Ç‰ÁƒpƒX‚ğ $($pthFile.Name) ‚É’Ç‹L‚µ‚Ü‚µ‚½" -ForegroundColor Green
+        Write-Host "è¿½åŠ ãƒ‘ã‚¹ã‚’ $($pthFile.Name) ã«è¿½è¨˜ã—ã¾ã—ãŸ" -ForegroundColor Green
     }
     else {
-        Write-Error "_pth ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßAƒZƒbƒgƒAƒbƒv‚ğ’†’f‚µ‚Ü‚·B"
+        Write-Error "_pth ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸãŸã‚ã€ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚’ä¸­æ–­ã—ã¾ã™ã€‚"
         exit 1
     }
 
-    # ÅV‚Ìuv.exe‚ğGithub‚©‚çReleaseƒtƒHƒ‹ƒ_‚Éƒ_ƒEƒ“ƒ[ƒhE‰ğ“€
+    # æœ€æ–°ã®uv.exeã‚’Githubã‹ã‚‰Releaseãƒ•ã‚©ãƒ«ãƒ€ã«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»è§£å‡
     function DownloadAndExtractUvExe {
         param (
             [string]$releaseDir
         )
-        Write-Host "`n`nGithub‚©‚çÅV‚Ìuv.exe‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‚¢‚Ü‚·..." -ForegroundColor Cyan
+        Write-Host "`n`nGithubã‹ã‚‰æœ€æ–°ã®uv.exeã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã„ã¾ã™..." -ForegroundColor Cyan
         $uvApiUrl = "https://api.github.com/repos/astral-sh/uv/releases/latest"
         $uvRelease = Invoke-RestMethod -Uri $uvApiUrl
 
@@ -205,7 +205,7 @@ try {
             $uvAsset = $uvRelease.assets | Where-Object { $_.name -eq "uv-aarch64-pc-windows-msvc.zip" } | Select-Object -First 1
         }
         if ($null -eq $uvAsset) {
-            Write-Error "uv‚ÌWindows—pzip‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B"
+            Write-Error "uvã®Windowsç”¨zipãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
             exit 1
         }
         $uvZipPath = Join-Path $releaseDir "uv-latest.zip"
@@ -215,7 +215,7 @@ try {
         $zip = [IO.Compression.ZipFile]::OpenRead($uvZipPath)
         $uvEntry = $zip.Entries | Where-Object { $_.FullName.ToLower().EndsWith("uv.exe") } | Select-Object -First 1
         if ($null -eq $uvEntry) {
-            Write-Error "uv.exe‚ªzip“à‚ÉŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B"
+            Write-Error "uv.exeãŒzipå†…ã«è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
             $zip.Dispose()
             Remove-Item $uvZipPath -Force
             exit 1
@@ -224,54 +224,54 @@ try {
         [System.IO.Compression.ZipFileExtensions]::ExtractToFile($uvEntry, $uvExePath, $true)
         $zip.Dispose()
         Remove-Item $uvZipPath -Force
-        Write-Host "uv.exe‚ğReleaseƒtƒHƒ‹ƒ_‚É”z’u‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+        Write-Host "uv.exeã‚’Releaseãƒ•ã‚©ãƒ«ãƒ€ã«é…ç½®ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
     }
 
-    # uv -V ‚ÅuvƒRƒ}ƒ“ƒh‚Ì—˜—p‰Â”Û‚ğ”»’è‚µAuv—DæE¸”s‚Ípip
-    Write-Host "`n== requirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚· =="
+    # uv -V ã§uvã‚³ãƒãƒ³ãƒ‰ã®åˆ©ç”¨å¯å¦ã‚’åˆ¤å®šã—ã€uvå„ªå…ˆãƒ»å¤±æ•—æ™‚ã¯pip
+    Write-Host "`n== requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ =="
     $pythonExe = Join-Path $targetFolder "python.exe"
     $requirementsPath = "./requirements.txt"
     if (Test-Path $requirementsPath) {
         if ($forcePip) {
-            # pip‚ÌƒCƒ“ƒXƒg[ƒ‹
-            Write-Host "pip‚Årequirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·B" -ForegroundColor Yellow
+            # pipã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+            Write-Host "pipã§requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã€‚" -ForegroundColor Yellow
             $pipUrl = "https://bootstrap.pypa.io/get-pip.py"
             $getPip = "$targetFolder\get-pip.py"
             Invoke-WebRequest -Uri $pipUrl -OutFile $getPip
             & $pythonExe $getPip --disable-pip-version-check --no-warn-script-location
             Remove-Item $getPip
 
-            # pipŒo—R‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹
+            # pipçµŒç”±ã§ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
             & $pythonExe -m pip install -r $requirementsPath --disable-pip-version-check --no-warn-script-location --no-cache-dir
-            Write-Host "pipŒo—R‚Årequirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+            Write-Host "pipçµŒç”±ã§requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
         } else {
-            # uv ‚ªƒCƒ“ƒXƒg[ƒ‹Ï‚İ‚ÅÀs‰Â”\‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+            # uv ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã§å®Ÿè¡Œå¯èƒ½ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯
             $uvAvailable = $false
             $uvExePath = $null
 
-            # 1. ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚Ì uv.exe ‚ğÅ‰‚ÉŠm”F
+            # 1. ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã® uv.exe ã‚’æœ€åˆã«ç¢ºèª
             $uvExeLocal = Join-Path $releaseDir "uv.exe"
             if (Test-Path $uvExeLocal) {
                 try {
                     & $uvExeLocal -V > $null 2>&1
                     if ($LASTEXITCODE -eq 0) {
-                        Write-Host "ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚Ì uv.exe ‚ğ—˜—p‚µ‚Ü‚·B" -ForegroundColor Green
+                        Write-Host "ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã® uv.exe ã‚’åˆ©ç”¨ã—ã¾ã™ã€‚" -ForegroundColor Green
                         $uvAvailable = $true
                         $uvExePath = $uvExeLocal
                     }
                 } catch {}
             }
 
-            # 2. ƒpƒX‚ª’Ê‚Á‚Ä‚¢‚é uv ƒRƒ}ƒ“ƒhiƒCƒ“ƒXƒg[ƒ‹Ï‚İ‚©ƒ`ƒFƒbƒNj
+            # 2. ãƒ‘ã‚¹ãŒé€šã£ã¦ã„ã‚‹ uv ã‚³ãƒãƒ³ãƒ‰ï¼ˆã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã‹ãƒã‚§ãƒƒã‚¯ï¼‰
             if (-not $uvAvailable) {
-                Write-Host "ƒCƒ“ƒXƒg[ƒ‹Ï‚İ‚Ì uv ƒRƒ}ƒ“ƒh‚ğŠm”F‚µ‚Ü‚·..." -ForegroundColor Cyan
+                Write-Host "ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã® uv ã‚³ãƒãƒ³ãƒ‰ã‚’ç¢ºèªã—ã¾ã™..." -ForegroundColor Cyan
                 $uvCmd = "uv"
                 $uvCmdPath = (Get-Command uv -All -ErrorAction Ignore).Source
                 if ($uvCmdPath) {
                     try {
                         & $uvCmdPath -V > $null 2>&1
                         if ($LASTEXITCODE -eq 0) {
-                            Write-Host "ƒCƒ“ƒXƒg[ƒ‹Ï‚İ‚Ì uv ƒRƒ}ƒ“ƒh‚ğ—˜—p‚µ‚Ü‚·B" -ForegroundColor Green
+                            Write-Host "ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã® uv ã‚³ãƒãƒ³ãƒ‰ã‚’åˆ©ç”¨ã—ã¾ã™ã€‚" -ForegroundColor Green
                             $uvAvailable = $true
                             $uvExePath = $uvCmdPath
                         }
@@ -279,9 +279,9 @@ try {
                 }
             }
 
-            # ‚Ç‚¿‚ç‚à‚È‚¯‚ê‚Îƒ_ƒEƒ“ƒ[ƒh
+            # ã©ã¡ã‚‰ã‚‚ãªã‘ã‚Œã°ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
             if (-not $uvAvailable) {
-                Write-Host "uv.exe‚ªŒ©‚Â‚©‚ç‚È‚¢‚½‚ßAƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·..." -ForegroundColor Yellow
+                Write-Host "uv.exeãŒè¦‹ã¤ã‹ã‚‰ãªã„ãŸã‚ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™..." -ForegroundColor Yellow
                 DownloadAndExtractUvExe -releaseDir $releaseDir
                 $uvExeLocal = Join-Path $releaseDir "uv.exe"
                 if (Test-Path $uvExeLocal) {
@@ -291,34 +291,34 @@ try {
             }
 
             if ($uvAvailable) {
-                # uvŒo—R‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹
+                # uvçµŒç”±ã§ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
                 Write-Host $uvExePath
                 & $uvExePath pip install -r $requirementsPath pip --python $pythonExe --no-cache-dir
-                Write-Host "uvŒo—R‚Årequirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+                Write-Host "uvçµŒç”±ã§requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
             } else {
-                Write-Host "uv‚ªŒ©‚Â‚©‚ç‚È‚¢‚½‚ßApip‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÉØ‚è‘Ö‚¦‚Ü‚·B" -ForegroundColor Yellow
-                # pip‚ÌƒCƒ“ƒXƒg[ƒ‹
-                Write-Host "pip‚Årequirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·B" -ForegroundColor Yellow
+                Write-Host "uvãŒè¦‹ã¤ã‹ã‚‰ãªã„ãŸã‚ã€pipã§ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã«åˆ‡ã‚Šæ›¿ãˆã¾ã™ã€‚" -ForegroundColor Yellow
+                # pipã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+                Write-Host "pipã§requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã€‚" -ForegroundColor Yellow
                 $pipUrl = "https://bootstrap.pypa.io/get-pip.py"
                 $getPip = "$targetFolder\get-pip.py"
                 Invoke-WebRequest -Uri $pipUrl -OutFile $getPip
                 & $pythonExe $getPip --disable-pip-version-check --no-warn-script-location
                 Remove-Item $getPip
 
-                # pipŒo—R‚Å‚ÌƒCƒ“ƒXƒg[ƒ‹
+                # pipçµŒç”±ã§ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
                 & $pythonExe -m pip install -r $requirementsPath --disable-pip-version-check --no-warn-script-location --no-cache-dir
-                Write-Host "pipŒo—R‚Årequirements.txt ‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+                Write-Host "pipçµŒç”±ã§requirements.txt ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
             }
         }
     } else {
         $absPath = [System.IO.Path]::GetFullPath($requirementsPath)
-        Write-Warning "$absPath ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B"
-        Write-Host "ˆ—‚ğ’†’f‚µ‚Ü‚·B" -ForegroundColor Yellow
+        Write-Warning "$absPath ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+        Write-Host "å‡¦ç†ã‚’ä¸­æ–­ã—ã¾ã™ã€‚" -ForegroundColor Yellow
         exit 1
     }
 
-    Write-Host "Python $version ‚Ì‘g‚İ‚İ”ÅƒZƒbƒgƒAƒbƒv‚ªŠ®—¹‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+    Write-Host "Python $version ã®çµ„ã¿è¾¼ã¿ç‰ˆã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãŒå®Œäº†ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
 } finally {
-    # Œ³‚ÌƒfƒBƒŒƒNƒgƒŠ‚É–ß‚é
+    # å…ƒã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«æˆ»ã‚‹
     Set-Location $originalDir
 }
